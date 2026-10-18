@@ -1,0 +1,235 @@
+:root {
+    --bg-dark: #0a080d;
+    --card-bg: #140f1a;
+    --accent-crimson: #bf1515;
+    --accent-crimson-glow: rgba(191, 21, 21, 0.4);
+    --accent-gold: #d4af37;
+    --border-purple: #3d2b4d;
+    --text-light: #e0d6e8;
+    --text-muted: #9a88a8;
+    --font-heading: 'Cinzel Decorative', serif;
+    --font-body: 'EB Garamond', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 背景粒子 Canvas */
+#ambient-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 大氣外圍暗角暗影 */
+.vignette-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.85) 90%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 手機容器限制 */
+.mobile-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 24px 16px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Header 樣式 */
+.gothic-header {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sigil-icon {
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    margin-bottom: 4px;
+}
+
+.gothic-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    text-shadow: 0 0 12px var(--accent-crimson-glow), 0 0 2px var(--accent-gold);
+}
+
+.header-divider {
+    color: var(--accent-crimson);
+    font-size: 1rem;
+    margin-top: 6px;
+}
+
+/* Gothic Ornate Card 裝飾卡片 */
+.gothic-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-purple);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-crimson-glow);
+    padding: 24px;
+    position: relative;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* 角落金屬裝飾元件 */
+.card-ornament {
+    position: absolute;
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.top-left { top: 6px; left: 8px; }
+.top-right { top: 6px; right: 8px; }
+.bottom-left { bottom: 6px; left: 8px; }
+.bottom-right { bottom: 6px; right: 8px; }
+
+.card-title {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.gothic-quote {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.card-glow-line {
+    height: 1px;
+    width: 60%;
+    margin: 16px auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent-crimson), transparent);
+}
+
+/* 折疊典籍選單 (Accordion) */
+.codex-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.accordion-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-purple);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 14px 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.accordion-header:hover, .accordion-header.active {
+    background: rgba(191, 21, 21, 0.15);
+    color: var(--accent-gold);
+}
+
+.arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+    color: var(--accent-gold);
+}
+
+.accordion-header.active .arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: rgba(10, 8, 13, 0.5);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.accordion-content.open {
+    padding: 14px 16px;
+}
+
+/* 華麗按鈕 */
+.action-wrapper {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.gothic-btn {
+    background: linear-gradient(180deg, #2b080b 0%, #120305 100%);
+    border: 1px solid var(--accent-gold);
+    padding: 14px 28px;
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 5px var(--accent-crimson-glow);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gothic-btn:hover {
+    box-shadow: 0 0 15px var(--accent-crimson-glow), 0 0 8px var(--accent-gold);
+    color: #ffffff;
+}
+
+/* Footer */
+.gothic-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-purple), transparent);
+    margin-bottom: 12px;
+}
