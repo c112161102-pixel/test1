@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gothic Codex | Mobile Interface</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 背景動態大氣粒子 -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- 視覺邊框暈影 (Vignette) -->
+    <div class="vignette-overlay"></div>
+
+    <div class="mobile-container">
+        <!-- 頂部標頭 -->
+        <header class="gothic-header">
+            <div class="sigil-icon">☽🕇☾</div>
+            <h1 class="gothic-title">NOCTURNE</h1>
+            <div class="header-divider">❖</div>
+        </header>
+
+        <!-- 主頁 Hero 卡片 -->
+        <main>
+            <section class="gothic-card hero-card">
+                <div class="card-ornament top-left">✦</div>
+                <div class="card-ornament top-right">✦</div>
+                <div class="card-ornament bottom-left">✦</div>
+                <div class="card-ornament bottom-right">✦</div>
+                
+                <h2 class="card-title">The Shadow Sigil</h2>
+                <p class="gothic-quote">
+                    "Into the deep ruin of twilight, where silence echoes louder than whisper."
+                </p>
+                <div class="card-glow-line"></div>
+            </section>
+
+            <!-- 可互動式典籍 (Accordion Sections) -->
+            <section class="codex-section">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🕮 Chapter I: Dark Architecture</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Designed with pointed arches, deep blood crimson accents, and intricate filigree textures suited for mobile immersion on GitHub Pages.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🕯️ Chapter II: Atmospheric Mist</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Floating ambient particles and subtle glowing borders create a dark fantasy atmosphere directly in your web browser.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚜️ Chapter III: The Golden Ratio</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Ornate typography powered by Cinzel Decorative paired with classic Garamond standard for high readability.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 互動按鈕 -->
+            <div class="action-wrapper">
+                <button class="gothic-btn" id="ritual-btn">
+                    <span class="btn-text">Commence Ritual</span>
+                </button>
+            </div>
+        </main>
+
+        <!-- 頁尾 -->
+        <footer class="gothic-footer">
+            <div class="footer-divider"></div>
+            <p>&copy; 2026 NOCTURNE CODEX. Designed for GitHub Pages.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
